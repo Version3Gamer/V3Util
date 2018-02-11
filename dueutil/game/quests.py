@@ -21,9 +21,9 @@ quest_map = DueMap()
 
 MIN_QUEST_IV = 0
 QUEST_DAY = 86400
-QUEST_COOLDOWN = 360
+QUEST_COOLDOWN = 60
 MAX_DAILY_QUESTS = 50
-MAX_ACTIVE_QUESTS = 10
+MAX_ACTIVE_QUESTS = 15
 
 
 class Quest(DueUtilObject, SlotPickleMixin):
@@ -45,7 +45,7 @@ class Quest(DueUtilObject, SlotPickleMixin):
         if message is not None:
             if message.server in quest_map:
                 if name.lower() in quest_map[message.server]:
-                    raise util.DueUtilException(message.channel, "A foe with that name already exists on this server!")
+                    raise util.DueUtilException(message.channel, "A quest with that name already exists on this server!")
 
             if base_accy < 1 or base_attack < 1 or base_strg < 1:
                 raise util.DueUtilException(message.channel, "No quest stats can be less than 1!")
